@@ -1,0 +1,21 @@
+.scroll-div{
+    height: 150px;
+    overflow-y: scroll;
+    display: block;
+    width: 100%;
+}
+
+.banner{
+    position: absolute;
+    width: 100%;
+}
+
+#main-div{
+    padding: 0 5%;
+}
+
+@media only screen and (max-width: 960px) {
+    .banner{
+        display: none
+    }
+}

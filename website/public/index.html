@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Website</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+  <a class="navbar-brand" href="\">Brand Logo</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="\">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="\">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="\">Pricing</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="banner">
+  <img
+    src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1549907924958x609040389524361900%2Fimage%2520%25281%2529.png?w=1536&h=237&auto=compress&fit=max"
+    alt="">
+</div>
+<div class="container p-2">
+  <div class="row">
+    <div class="col-md-12">
+      <input onkeyup="searchFeature(event)" class="form-control" type="text" placeholder="Search" aria-label="Search">
+    </div>
+  </div>
+</div>
+<div id="main-div">
+  <div class="container" id="whats-hot-div">
+
+  </div>
+  <div class="container" id="recommnded-div">
+
+  </div>
+</div>
+
+<body>
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script src="./index.js"></script>
+  <script>
+
+    function searchFeature(e) {
+      console.log(e.target.value);
+      $.ajax({
+        url: "http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=b75da00e12d54774a2d362adddcc9bef&q=" + e.target.value,
+        type: 'GET',
+        success: function (data) {
+          let row = '<div class="row">'
+          data.response.docs ? data.response.docs.forEach((element, i) => {
+            i % 4 === 0 && i > 1 ? row += '</div><div class="row">' : null;
+            row += `<div class="col-md-3 col-sm-6 p-3"><div class="card"><img class="card-img-top" src="${element.multimedia.url}"><div class="card-body"><h5 class="card-title">${element.abstract}</h5><p class="card-text">${element.lead_paragraph}</p><a href="#" class="btn btn-sm btn-primary">Button</a></div></div></div>`;
+          }) : null;
+          document.querySelector('#main-div').innerHTML = row;
+        },
+        dataType: "json"
+      })
+    }</script>
+</body>
+
+</html>

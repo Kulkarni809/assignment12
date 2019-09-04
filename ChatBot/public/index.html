@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>ChatBot</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 max-height b1">
+                <div class="chat-div">
+                    <div id="chat-screen" class="msg-group center">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted text-left">Bot</h6>
+                                <p class="card-text float-left">Hii Im a bot!~</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-div">
+                    <form id="sendMsg">
+                        <div class="input-group pt-2">
+                            <textarea id="msgbox" class="form-control" rows="1"
+                                placeholder="Say something..."></textarea>
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-secondary">Send</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
